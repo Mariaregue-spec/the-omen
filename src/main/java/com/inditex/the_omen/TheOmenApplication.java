@@ -8,8 +8,8 @@ public class TheOmenApplication {
 
 	public static void main(String[] args) {
 
-		//SpringApplication.run(TheOmenApplication.class, args);
-		System.out.println("Hello world");
+		SpringApplication.run(TheOmenApplication.class, args);
+
 	}
 
 }
