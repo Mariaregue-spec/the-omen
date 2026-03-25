@@ -3,9 +3,11 @@ package com.inditex.the_omen.controller;
 import com.inditex.the_omen.model.Movie;
 import com.inditex.the_omen.repository.MovieRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class MovieController {
 
     private final MovieRepository movieRepository;
