@@ -3,10 +3,7 @@ package com.inditex.the_omen.controller;
 import com.inditex.the_omen.model.Movie;
 import com.inditex.the_omen.repository.MovieRepository;
 import com.inditex.the_omen.service.MovieService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,16 @@ public class MovieController {
     @PostMapping("/movies")
     public Movie createMovie(@RequestBody Movie newMovie){
         return movieService.addMovie(newMovie);
+    }
+
+    @DeleteMapping("/movies/{id}")
+    public void deleteMovieById(@PathVariable int id){
+        movieService.deleteMovie(id);
+    }
+
+    @GetMapping("/movies/ASC")
+    public List<Movie> getAllByOrder(){
+        return movieService.getAllByOrder();
     }
 }
 

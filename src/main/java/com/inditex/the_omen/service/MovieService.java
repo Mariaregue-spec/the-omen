@@ -2,6 +2,7 @@ package com.inditex.the_omen.service;
 
 import com.inditex.the_omen.model.Movie;
 import com.inditex.the_omen.repository.MovieRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +20,13 @@ public class MovieService {
 
     public Movie addMovie(Movie newMovie){
         return movieRepository.save(newMovie);
+    }
+
+    public void deleteMovie(int id) {
+        movieRepository.deleteById(id);
+    }
+
+    public List<Movie> getAllByOrder() {
+        return movieRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
     }
 }
