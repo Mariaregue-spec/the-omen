@@ -24,6 +24,7 @@ public class MovieService {
 
     public void deleteMovie(int id) {
         movieRepository.deleteById(id);
+        System.out.println("Película eliminada correctamente");
     }
 
     public List<Movie> getAllByOrder() {

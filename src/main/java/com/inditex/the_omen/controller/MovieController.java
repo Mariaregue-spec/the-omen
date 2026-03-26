@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class MovieController {
 
     private final MovieRepository movieRepository;
@@ -18,14 +19,14 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
-    public List<Movie> getAllMovies(){
-        return movieRepository.findAll();
-    }
-
     @PostMapping("/movies")
     public Movie createMovie(@RequestBody Movie newMovie){
         return movieService.addMovie(newMovie);
+    }
+
+    @GetMapping("/movies")
+    public List<Movie> getAllMovies(){
+        return movieRepository.findAll();
     }
 
     @DeleteMapping("/movies/{id}")
