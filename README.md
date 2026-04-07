@@ -180,4 +180,4 @@ MIT License - ver el archivo LICENSE
 🚀 Integrado con theOmen frontend
  para una experiencia completa
 
-</div> ```
+</div> 
