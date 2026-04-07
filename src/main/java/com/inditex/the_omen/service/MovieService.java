@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -29,5 +30,30 @@ public class MovieService {
 
     public List<Movie> getAllByOrder() {
         return movieRepository.findAll(Sort.by(Sort.Direction.ASC, "title"));
+    }
+
+    public Optional<Movie> findMovie(int id) {
+        return movieRepository.findById(id);
+    }
+
+    public Movie updateMovie(int id, Movie updatedMovie){
+        // verificamos que aún existe la película después de rellenar el formulario
+        Optional<Movie> foundMovie = movieRepository.findById(id);
+        if(foundMovie.isPresent()){
+            Movie existingMovie = foundMovie.get();
+
+            // actualizamos los campos
+            existingMovie.setTitulo(updatedMovie.getTitulo());
+            existingMovie.setAnio(updatedMovie.getAnio());
+            existingMovie.setRating(updatedMovie.getRating());
+            existingMovie.setPoster(updatedMovie.getPoster());
+            existingMovie.setSinopsis(updatedMovie.getSinopsis());
+
+            // guardar la película
+            return movieRepository.save(existingMovie);
+        }
+
+        // si no existe la película enviar un mensaje de error al usuario
+        throw new RuntimeException("No se encontro la película con el id: " + id);
     }
 }
