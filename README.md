@@ -1,304 +1,184 @@
-# 🎬 The Omen - API de Películas
+# 🔮 The Omen
 
 <div align="center">
 
-![Java](https://img.shields.io/badge/Java-25-blue.svg?style=for-the-badge&logo=java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0-green.svg?style=for-the-badge&logo=spring&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow.svg?style=for-the-badge)
+### ⚡ API REST de alto rendimiento para gestionar colecciones de películas
 
-*Una API REST para gestionar tu colección personal de películas*
+![Java](https://img.shields.io/badge/Java-25-blue?style=for-the-badge&logo=java)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-green?style=for-the-badge&logo=spring)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-orange?style=for-the-badge&logo=mysql)
+![API](https://img.shields.io/badge/API-REST-black?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-production--ready-success?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)
 
 </div>
 
 ---
 
-## 📋 Tabla de Contenidos
+## 🎬 ¿Qué es The Omen?
 
-- [Acerca de](#acerca-de)
-- [Características](#características)
-- [Tecnologías](#tecnologías)
-- [Endpoints de la API](#endpoints-de-la-api)
-- [Primeros Pasos](#primeros-pasos)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Licencia](#licencia)
+En un entorno donde los datos crecen constantemente, **organizar, acceder y manipular información de forma eficiente es clave**.
+
+**The Omen** es una API REST construida con Spring Boot que permite gestionar colecciones de películas mediante una arquitectura limpia, escalable y preparada para producción.
+
+> ⚡ No es solo un CRUD. Es una base sólida para construir aplicaciones reales.
 
 ---
 
-## 🎯 Acerca de
+## 🚀 ¿Por qué este proyecto?
 
-**The Omen** es una API REST construida con Spring Boot que te permite gestionar una colección personal de películas. Ofrece operaciones CRUD completas, incluyendo funcionalidades como ordenamiento, búsqueda por ID y más.
+Este proyecto demuestra:
 
-> *"La única cosa que debemos temer es temer perdernos una gran película."*
-
----
-
-## ✨ Características
-
-| Característica | Descripción |
-|----------------|-------------|
-| 📽️ **Operaciones CRUD** | Crear, Leer, Actualizar y Eliminar películas |
-| 🔍 **Buscar por ID** | Recuperar películas específicas por su identificador |
-| 📊 **Ordenamiento** | Obtener películas ordenadas alfabéticamente por título |
-| 🌐 **CORS Habilitado** | Listo para integración con frontend |
-| 💾 **Almacenamiento Persistente** | Base de datos MySQL para almacenamiento confiable |
+- 🧠 Diseño de arquitectura backend (Controller → Service → Repository)
+- ⚙️ Implementación de API REST profesional
+- 💾 Persistencia de datos con JPA + MySQL
+- 🔌 Preparación para integración con frontend (CORS habilitado)
 
 ---
 
-## 🛠️ Tecnologías
+## ✨ Características principales
 
-<div align="center">
-
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="24" height="24"> Java | 25 | Lenguaje de Programación |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="24" height="24"> Spring Boot | 4.0 | Framework Backend |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="24" height="24"> MySQL | 8.0 | Base de Datos |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" width="24" height="24"> Maven | - | Herramienta de Construcción |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" width="24" height="24"> IntelliJ IDEA | - | IDE |
-
-</div>
-
-### Dependencias
-
-- `spring-boot-starter-data-jpa` - Acceso a base de datos con JPA
-- `spring-boot-starter-webmvc` - Soporte para API REST
-- `mysql-connector-j` - Driver JDBC de MySQL
-- `spring-boot-devtools` - Herramientas de desarrollo
+- 📽️ CRUD completo de películas  
+- 🔍 Búsqueda por ID  
+- 📊 Ordenamiento alfabético  
+- 🌐 CORS habilitado  
+- 💾 Persistencia con MySQL  
+- ⚡ Arquitectura desacoplada  
 
 ---
 
-## 📡 Endpoints de la API
+## 🧪 Ejemplo real de respuesta
 
-### URL Base
+```json
+{
+  "id": 7,
+  "titulo": "Hereditary",
+  "anio": 2018,
+  "rating": 7.3,
+  "poster": "https://...",
+  "sinopsis": "El legado de una familia se convierte en una pesadilla."
+}
 ```
+---
+## 📡 API Endpoints
+Base URL
 http://localhost:8080
-```
 
-### Endpoints
+---
+Endpoints disponibles
 
-| Método | Endpoint | Descripción | Cuerpo de Solicitud |
-|--------|----------|-------------|---------------------|
-| `GET` | `/movies` | Obtener todas las películas | - |
-| `GET` | `/movies/{id}` | Obtener película por ID | - |
-| `GET` | `/movies/ASC` | Obtener películas ordenadas alfabéticamente | - |
-| `POST` | `/movies` | Crear una nueva película | ✅ |
-| `PUT` | `/movies/{id}` | Actualizar una película | ✅ |
-| `DELETE` | `/movies/{id}` | Eliminar una película | - |
+| Método | Endpoint       | Descripción                 |
+| ------ | -------------- | --------------------------- |
+| GET    | `/movies`      | Obtener todas las películas |
+| GET    | `/movies/{id}` | Obtener película por ID     |
+| GET    | `/movies/ASC`  | Obtener películas ordenadas |
+| POST   | `/movies`      | Crear nueva película        |
+| PUT    | `/movies/{id}` | Actualizar película         |
+| DELETE | `/movies/{id}` | Eliminar película           |
 
-### Ejemplo de Cuerpo de Solicitud
-
-```json
-{
-  "titulo": "El Conjuro",
-  "anio": 2013,
-  "rating": 7.8,
-  "poster": "https://ejemplo.com/poster.jpg",
-  "sinopsis": "Una familia es aterrorizada por un demonio ancestral."
-}
-```
-
-### Ejemplo de Respuesta
-
-```json
-{
-  "id": 1,
-  "titulo": "El Conjuro",
-  "anio": 2013,
-  "rating": 7.8,
-  "poster": "https://ejemplo.com/poster.jpg",
-  "sinopsis": "Una familia es aterrorizada por un demonio ancestral."
-}
-```
-
-### Códigos de Estado HTTP
-
-| Código | Estado | Descripción |
-|--------|--------|-------------|
-| `200` | OK | Solicitud exitosa |
-| `201` | CREADO | Película creada exitosamente |
-| `302` | ENCONTRADO | Película encontrada |
-| `404` | NO ENCONTRADO | Película no encontrada |
+---
+## 🏗️ Arquitectura
+Cliente → Controller → Service → Repository → Base de Datos
+Flujo interno
+Request → Validación → Lógica de negocio → Persistencia → Response
 
 ---
 
-## 🚀 Primeros Pasos
+## 🛠️ Stack tecnológico
+Tecnología	Rol
+Java 25	Lenguaje principal
+Spring Boot 4	Framework backend
+MySQL 8	Base de datos
+Maven	Gestión de dependencias
+JPA/Hibernate	ORM
 
-### Requisitos Previos
+---
 
-- Java 25 o superior
-- Maven 3.6+
-- MySQL 8.0+
-- Tu IDE favorito (IntelliJ IDEA recomendado)
-
-### Instalación
-
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/tu-usuario/the-omen.git
+## ⚙️ Instalación
+git clone https://github.com/Mariaregue-spec/the-omen.git
 cd the-omen
-```
+Configuración
 
-2. **Configurar la base de datos**
+Edita:
 
-Actualiza `src/main/resources/application.properties` con tus credenciales de MySQL:
-
-```properties
-spring.application.name=the-omen
-server.port=8080
-
-# Configuración MySQL
-spring.datasource.url=jdbc:mysql://localhost:3306/the_omen?createDatabaseIfNotExist=true
+src/main/resources/application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/the_omen
 spring.datasource.username=tu_usuario
-spring.datasource.password=tu_contraseña
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.password=tu_password
 
-# Configuración JPA
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-```
+---
 
-3. **Compilar el proyecto**
-```bash
-./mvnw clean install
-```
-
-4. **Ejecutar la aplicación**
-```bash
+## ▶️ Ejecución
 ./mvnw spring-boot:run
-```
 
-La API estará disponible en `http://localhost:8080`
+API disponible en:
 
----
-
-## 📁 Estructura del Proyecto
-
-```
-the-omen/
-├── src/
-│   └── main/
-│       ├── java/com/inditex/the_omen/
-│       │   ├── TheOmenApplication.java          # Punto de entrada
-│       │   ├── controller/
-│       │   │   └── MovieController.java        # Endpoints REST
-│       │   ├── model/
-│       │   │   └── Movie.java                   # Entidad Película
-│       │   ├── repository/
-│       │   │   └── MovieRepository.java         # Capa de acceso a datos
-│       │   └── service/
-│       │       └── MovieService.java            # Lógica de negocio
-│       └── resources/
-│           └── application.properties           # Configuración
-├── pom.xml                                      # Dependencias Maven
-└── README.md                                    # Este archivo
-```
-
-### Arquitectura
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                     Solicitud del Cliente                 │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                   MovieController                         │
-│                   (Endpoints REST)                        │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    MovieService                          │
-│                   (Lógica de Negocio)                    │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                  MovieRepository                         │
-│                    (Repositorio JPA)                     │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                        MySQL                              │
-│                    (Base de Datos)                        │
-└─────────────────────────────────────────────────────────┘
-```
+http://localhost:8080
 
 ---
 
-## 🔧 Desarrollo
-
-### Ejecutar Pruebas
-```bash
+## 🧪 Testing
 ./mvnw test
-```
-
-### Compilar para Producción
-```bash
-./mvnw clean package -DskipTests
-```
 
 ---
 
-## 📝 Modelo de Película
-
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| `id` | int | Identificador único (auto-generado) |
-| `titulo` | String | Título de la película |
-| `anio` | int | Año de lanzamiento |
-| `rating` | double | Puntuación de la película (0-10) |
-| `poster` | String | URL de la imagen del póster |
-| `sinopsis` | String | Sinopsis/descripción de la película |
+## 📁 Estructura del proyecto
+src/main/java/com/inditex/the_omen/
+│
+├── controller/      # Endpoints REST
+├── service/         # Lógica de negocio
+├── repository/      # Acceso a datos
+└── model/           # Entidades
 
 ---
 
-## 🌟 Ejemplos de Uso de la API
-
-### Crear una Película
-```bash
-curl -X POST http://localhost:8080/movies ^
-  -H "Content-Type: application/json" ^
-  -d "{\"titulo\":\"El Exorcista\",\"anio\":1973,\"rating\":8.1,\"poster\":\"url\",\"sinopsis\":\"Descripción\"}"
-```
-
-### Obtener Todas las Películas
-```bash
-curl http://localhost:8080/movies
-```
-
-### Obtener Película por ID
-```bash
-curl http://localhost:8080/movies/1
-```
-
-### Actualizar una Película
-```bash
-curl -X PUT http://localhost:8080/movies/1 ^
-  -H "Content-Type: application/json" ^
-  -d "{\"titulo\":\"Título Actualizado\",\"anio\":2024,\"rating\":9.0,\"poster\":\"url\",\"sinopsis\":\"Nueva descripción\"}"
-```
-
-### Eliminar una Película
-```bash
-curl -X DELETE http://localhost:8080/movies/1
-```
+## 🧠 Modelo de datos
+Campo	Tipo
+id	int
+titulo	String
+anio	int
+rating	double
+poster	String
+sinopsis	String
 
 ---
 
+## 🌐 Integración
+
+💡 Esta API está lista para conectarse con cualquier frontend:
+
+React
+Angular
+Vue
+Apps móviles
+
+---
+
+## 📈 Posibles mejoras (Roadmap)
+ Paginación
+ Filtros avanzados
+ Autenticación (JWT)
+ Documentación con Swagger
+ Deploy en la nube
+
+ ---
+ 
+## 🤝 Contribuciones
+Fork del repo
+Crea una rama (feature/nueva-feature)
+Commit
+Pull Request
+
+---
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
+MIT License
 ---
-
 <div align="center">
+🔮 The Omen
+“No predice el futuro. Lo estructura.”
+---
+⭐ Si te ha gustado el proyecto, dale una estrella
+🚀 Si eres recruiter, este proyecto demuestra capacidad backend real
 
-**Hecho con ☕ y 🎬 por María Regueiro**
-
-*¡Dale una estrella si te resulta útil!*
-
-</div>
+</div> ```
