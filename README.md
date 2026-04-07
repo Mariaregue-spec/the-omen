@@ -1,8 +1,8 @@
-# 🔮 The Omen
+# 🔮 The Omen - API de Películas
 
 <div align="center">
 
-### ⚡ API REST de alto rendimiento para gestionar colecciones de películas
+### ⚡ API REST de alto rendimiento conectada con el frontend [`theOmen`](https://github.com/Mariaregue-spec/theOmen)
 
 ![Java](https://img.shields.io/badge/Java-25-blue?style=for-the-badge&logo=java)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-green?style=for-the-badge&logo=spring)
@@ -17,74 +17,77 @@
 
 ## 🎬 ¿Qué es The Omen?
 
-En un entorno donde los datos crecen constantemente, **organizar, acceder y manipular información de forma eficiente es clave**.
+**The Omen** es una API REST construida con Spring Boot que gestiona colecciones de películas de forma eficiente, escalable y profesional.  
+Se integra perfectamente con tu frontend [`theOmen`](https://github.com/Mariaregue-spec/theOmen) para entregar una experiencia completa de CRUD de películas.
 
-**The Omen** es una API REST construida con Spring Boot que permite gestionar colecciones de películas mediante una arquitectura limpia, escalable y preparada para producción.
-
-> ⚡ No es solo un CRUD. Es una base sólida para construir aplicaciones reales.
-
----
-
-## 🚀 ¿Por qué este proyecto?
-
-Este proyecto demuestra:
-
-- 🧠 Diseño de arquitectura backend (Controller → Service → Repository)
-- ⚙️ Implementación de API REST profesional
-- 💾 Persistencia de datos con JPA + MySQL
-- 🔌 Preparación para integración con frontend (CORS habilitado)
+> ⚡ “No predice el futuro. Lo estructura.”
 
 ---
 
-## ✨ Características principales
+## 🚀 Características principales
 
-- 📽️ CRUD completo de películas  
+- 📽️ CRUD completo de películas (Crear, Leer, Actualizar, Eliminar)  
 - 🔍 Búsqueda por ID  
 - 📊 Ordenamiento alfabético  
 - 🌐 CORS habilitado  
 - 💾 Persistencia con MySQL  
-- ⚡ Arquitectura desacoplada  
+- ⚡ Arquitectura desacoplada y escalable  
 
 ---
 
-## 🧪 Ejemplo real de respuesta
+## 🖥️ Demo de flujo (mockup estilizado)
 
-```json
-{
-  "id": 7,
-  "titulo": "Hereditary",
-  "anio": 2018,
-  "rating": 7.3,
-  "poster": "https://...",
-  "sinopsis": "El legado de una familia se convierte en una pesadilla."
-}
+```mermaid
+flowchart LR
+    %% Estilos de nodos
+    classDef frontend fill:#f9f,stroke:#333,stroke-width:2px,color:#000;
+    classDef backend fill:#bbf,stroke:#333,stroke-width:2px,color:#000;
+    classDef service fill:#bfb,stroke:#333,stroke-width:2px,color:#000;
+    classDef db fill:#ffb,stroke:#333,stroke-width:2px,color:#000;
+
+    %% Nodos
+    A[Frontend React SPA]:::frontend -->|GET /movies| B[The Omen API - Spring Boot]:::backend
+    B --> C[MovieService]:::service
+    C --> D[MovieRepository - JPA]:::service
+    D --> E[MySQL Database]:::db
+    B -->|POST/PUT/DELETE| D
+    C --> B
+    A <-->|JSON Response| B
 ```
 ---
-## 📡 API Endpoints
-Base URL
-http://localhost:8080
+## 🧪 Ejemplo real de respuesta
 
----
-Endpoints disponibles
-
-| Método | Endpoint       | Descripción                 |
-| ------ | -------------- | --------------------------- |
-| GET    | `/movies`      | Obtener todas las películas |
-| GET    | `/movies/{id}` | Obtener película por ID     |
-| GET    | `/movies/ASC`  | Obtener películas ordenadas |
-| POST   | `/movies`      | Crear nueva película        |
-| PUT    | `/movies/{id}` | Actualizar película         |
-| DELETE | `/movies/{id}` | Eliminar película           |
-
----
-## 🏗️ Arquitectura
-Cliente → Controller → Service → Repository → Base de Datos
-Flujo interno
-Request → Validación → Lógica de negocio → Persistencia → Response
+{
+  
+  "id": 7,
+  
+  "titulo": "Hereditary",
+  
+  "anio": 2018,
+  
+  "rating": 7.3,
+  
+  "poster": "https://...",
+  
+  "sinopsis": "El legado de una familia se convierte en una pesadilla."
+  
+}
 
 ---
 
-## 🛠️ Stack tecnológico
+## 📡 Endpoints principales
+
+Método	Endpoint	Descripción
+GET	/movies	Obtener todas las películas
+GET	/movies/{id}	Obtener película por ID
+GET	/movies/ASC	Ordenar películas alfabéticamente
+POST	/movies	Crear nueva película
+PUT	/movies/{id}	Actualizar película
+DELETE	/movies/{id}	Eliminar película
+
+---
+
+## 🏗️ Stack tecnológico
 Tecnología	Rol
 Java 25	Lenguaje principal
 Spring Boot 4	Framework backend
@@ -94,21 +97,18 @@ JPA/Hibernate	ORM
 
 ---
 
-## ⚙️ Instalación
-git clone https://github.com/Mariaregue-spec/the-omen.git
+## ⚙️ Instalación rápida
+git clone https://github.com/Mariaregue-spec/theOmen.git
 cd the-omen
-Configuración
 
-Edita:
+Configura tu base de datos en src/main/resources/application.properties:
 
-src/main/resources/application.properties
 spring.datasource.url=jdbc:mysql://localhost:3306/the_omen
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_password
 
----
+Ejecuta:
 
-## ▶️ Ejecución
 ./mvnw spring-boot:run
 
 API disponible en:
@@ -117,14 +117,16 @@ http://localhost:8080
 
 ---
 
-## 🧪 Testing
-./mvnw test
+## 🌐 Integración con Frontend theOmen
+Clona o conecta tu frontend SPA theOmen
+Cambia la URL base de los fetch/axios a http://localhost:8080
+Todas las operaciones CRUD (GET, POST, PUT, DELETE) están listas para interactuar con tu backend
+Resultado inmediato: frontend dinámico consumiendo datos reales de MySQL
 
 ---
 
 ## 📁 Estructura del proyecto
 src/main/java/com/inditex/the_omen/
-│
 ├── controller/      # Endpoints REST
 ├── service/         # Lógica de negocio
 ├── repository/      # Acceso a datos
@@ -133,52 +135,49 @@ src/main/java/com/inditex/the_omen/
 ---
 
 ## 🧠 Modelo de datos
-Campo	Tipo
-id	int
-titulo	String
-anio	int
-rating	double
-poster	String
-sinopsis	String
+
+Campo	Tipo	Descripción
+id	int	Identificador único
+titulo	String	Nombre de la película
+anio	int	Año de lanzamiento
+rating	double	Puntuación (0-10)
+poster	String	URL del póster
+sinopsis	String	Sinopsis de la película
 
 ---
 
-## 🌐 Integración
-
-💡 Esta API está lista para conectarse con cualquier frontend:
-
-React
-Angular
-Vue
-Apps móviles
-
----
-
-## 📈 Posibles mejoras (Roadmap)
- Paginación
- Filtros avanzados
- Autenticación (JWT)
- Documentación con Swagger
- Deploy en la nube
+## 📈 Roadmap (Próximas mejoras)
+ Paginación y filtros avanzados
+ Autenticación JWT
+ Documentación con Swagger UI
+ Deploy en la nube (Heroku, Railway, AWS)
+ Integración con CI/CD (GitHub Actions)
 
  ---
  
 ## 🤝 Contribuciones
+
 Fork del repo
-Crea una rama (feature/nueva-feature)
-Commit
+Crear una rama (feature/nueva-feature)
+Commit de tus cambios
 Pull Request
 
 ---
+
 ## 📄 Licencia
 
-MIT License
+MIT License - ver el archivo LICENSE
+ para más detalles.
+ 
 ---
+
 <div align="center">
 🔮 The Omen
 “No predice el futuro. Lo estructura.”
----
-⭐ Si te ha gustado el proyecto, dale una estrella
-🚀 Si eres recruiter, este proyecto demuestra capacidad backend real
+  
+
+⭐ Dale una estrella si te ha resultado útil
+🚀 Integrado con theOmen frontend
+ para una experiencia completa
 
 </div> ```
