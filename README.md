@@ -297,7 +297,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 <div align="center">
 
-**Hecho con ☕ y 🎬 por Inditex**
+**Hecho con ☕ y 🎬 por María Regueiro**
 
 *¡Dale una estrella si te resulta útil!*
 
