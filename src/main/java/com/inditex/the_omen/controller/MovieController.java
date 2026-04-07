@@ -53,7 +53,7 @@ public class MovieController {
 
     }
 
-    @PutMapping("/movies/(id)")
+    @PutMapping("/movies/{id}")
     public ResponseEntity<Movie> updateMovieById(@PathVariable int id, @RequestBody Movie updatedMovie){
         try {
             // actualizo los campos si existe el id en la Base de Datos
@@ -65,14 +65,6 @@ public class MovieController {
         }
 
     }
-
-
-
-
-
-
-
-
 
 
 
