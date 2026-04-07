@@ -166,8 +166,8 @@ Pull Request
 
 ## 📄 Licencia
 
-MIT License - ver el archivo LICENSE
- para más detalles.
+Este proyecto está bajo la **Licencia MIT**.  
+Ver el archivo [LICENSE](LICENSE) para más detalles.
  
 ---
 
